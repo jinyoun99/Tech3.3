@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechAuto | Where Technology Meets Automotive Excellence</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #1d1d1f;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(0, 0, 0, 0.05);
+      --accent: #0071e3;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; }
+    body { background:var(--bg-color); color:var(--text-color); overflow-x:hidden; }/* Navigation Bar */
+nav.glass-nav {
+  position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center;
+  padding:0.5rem 1rem; background:var(--glass-bg); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-border); z-index:1000;
+}
+.logo { margin-right:auto; font-size:1.5rem; font-weight:700; }
+.nav-actions { display:flex; gap:0.75rem; }
+.nav-toggle { font-size:1.2rem; background:var(--glass-bg); padding:0.5rem; border-radius:50%; border:1px solid var(--glass-border); cursor:pointer; transition:transform .2s; }
+.nav-toggle:active { transform:scale(1.1); }
+
+/* Taskbar-like hover effect */
+.nav-links { display:none; position:absolute; top:100%; right:1rem;
+  background:var(--glass-bg); backdrop-filter:blur(20px); padding:0.5rem; border-radius:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+  flex-direction:column;
+}
+.nav-links.active { display:flex; }
+.nav-links a {
+  color:var(--text-color); text-decoration:none; padding:0.5rem 1rem; border-radius:4px;
+  transition:background .2s;
+}
+.nav-links a:hover {
+  background:var(--accent); color:#fff;
+}
+
+/* Popups */
+.popup { display:none; position:absolute; top:100%; right:1rem;
+  background:var(--glass-bg); backdrop-filter:blur(20px); padding:0.5rem; border-radius:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+}
+.popup.active { display:block; }
+/* Search input */
+#search-popup input { padding:0.5rem; border:none; border-radius:4px; width:200px; }
+
+/* Theme Picker Vertical */
+.theme-picker { display:flex; flex-direction:column; gap:0.5rem; }
+.theme-swatch { width:30px; height:30px; border-radius:4px; cursor:pointer; border:1px solid rgba(0,0,0,0.1); transition:transform .2s; }
+.theme-swatch:hover { transform:scale(1.1); }
+
+section.hero { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;
+  background:url('https://assets.mixkit.co/videos/preview/mixkit-sports-car-driving-in-a-city-34555-large.mp4') no-repeat center/cover; position:relative;
+}
+section.hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(255,255,255,0.05),rgba(255,255,255,0.02)); }
+.hero-content { position:relative; padding:2rem; background:var(--glass-bg); border-radius:8px; backdrop-filter:blur(20px); }
+
+footer.glass-footer { text-align:center; padding:2rem; background:var(--glass-bg); backdrop-filter:blur(20px); border-top:1px solid var(--glass-border); }
+
+  </style>
+</head>
+<body>
+  <nav class="glass-nav">
+    <div class="nav-actions">
+      <i class="fas fa-bars nav-toggle" id="menu-toggle"></i>
+      <i class="fas fa-search nav-toggle" id="search-toggle"></i>
+      <i class="fas fa-palette nav-toggle" id="theme-toggle"></i>
+    </div>
+    <div class="logo"><i class="fas fa-home"></i></div>
+    <div class="nav-links" id="nav-links">
+      <a href="#features">Features</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="popup" id="search-popup">
+      <input type="text" placeholder="Search TechAuto..." />
+    </div>
+    <div class="popup" id="theme-popup">
+      <div class="theme-picker" id="theme-picker">
+        <div class="theme-swatch" data-theme="light" style="background:#ffffff" title="Light"></div>
+        <div class="theme-swatch" data-theme="dark" style="background:#1d1d1f" title="Dark"></div>
+        <div class="theme-swatch" data-theme="blue" style="background:#0071e3" title="Blue"></div>
+        <div class="theme-swatch" data-theme="green" style="background:#1db954" title="Green"></div>
+        <div class="theme-swatch" data-theme="purple" style="background:#800080" title="Purple"></div>
+        <div class="theme-swatch" data-theme="red" style="background:#d32f2f" title="Red"></div>
+        <div class="theme-swatch" data-theme="orange" style="background:#f57c00" title="Orange"></div>
+        <div class="theme-swatch" data-theme="pink" style="background:#e91e63" title="Pink"></div>
+      </div>
+    </div>
+  </nav>  <section class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1>The Future of Mobility is Here</h1>
+      <p>Where cutting-edge technology meets automotive excellence</p>
+    </div>
+  </section>  <footer class="glass-footer">
+    <p>&copy; 2025 TechAuto. All rights reserved.</p>
+  </footer>  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>AOS.init();</script>  <script>
+    document.getElementById('menu-toggle').onclick = ()=> document.getElementById('nav-links').classList.toggle('active');
+    document.getElementById('search-toggle').onclick = ()=> document.getElementById('search-popup').classList.toggle('active');
+    document.getElementById('theme-toggle').onclick = ()=> document.getElementById('theme-popup').classList.toggle('active');
+
+    const themes = {
+      light: {'--bg-color':'#ffffff','--text-color':'#1d1d1f','--glass-bg':'rgba(255,255,255,0.15)','--glass-border':'rgba(0,0,0,0.05)'},
+      dark: {'--bg-color':'#000000','--text-color':'#f5f5f7','--glass-bg':'rgba(20,20,30,0.15)','--glass-border':'rgba(255,255,255,0.08)'},
+      blue: {'--accent':'#0071e3'}, green:{'--accent':'#1db954'}, purple:{'--accent':'#800080'},
+      red:{'--accent':'#d32f2f'}, orange:{'--accent':'#f57c00'}, pink:{'--accent':'#e91e63'}
+    };
+    document.querySelectorAll('.theme-swatch').forEach(s=> s.onclick = ()=>{
+      Object.entries(themes[s.dataset.theme]).forEach(([v,val])=> document.documentElement.style.setProperty(v,val));
+    });
+  </script></body>
+</html>
